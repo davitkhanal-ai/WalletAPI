@@ -2,10 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./modules/users/users.routes");
 require("dotenv").config();
-const mongo_connect = process.env.MONGO_URL;
 const app = express();
-// Use middleware to parse JSON requests
 app.use(express.json());
+const mongo_connect = process.env.MONGO_URL;
+
+//create a collection called users
 require("./models/users.models");
 
 mongoose
