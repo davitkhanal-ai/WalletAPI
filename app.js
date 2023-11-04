@@ -2,8 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const app = express();
+
+//database variables deriving from env file
 const mongo_connect = process.env.MONGO_URL;
 
+// DB connection strings
 mongoose
   .connect(mongo_connect, {})
   .then(() => {
