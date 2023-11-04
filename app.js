@@ -11,7 +11,7 @@ mongoose
   .connect(mongo_connect, {})
   .then(() => {
     console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!"
+      "Database has been connected to Wallet API projects"
     );
   })
   .catch((err) => {
