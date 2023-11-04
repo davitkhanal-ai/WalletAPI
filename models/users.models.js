@@ -12,12 +12,16 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, "Email is required"],
+    // unique:true
   },
   password: {
     type: String,
     required: [true, "password is required"],
   },
-
+  balance: {
+    type: Number,
+    require: [true, "balance is required"],
+  },
   createdAt: {
     type: Date,
     default: Date.now,
