@@ -2,7 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./modules/users/users.routes");
 require("dotenv").config();
+const mongo_connect = process.env.MONGO_URL;
 const app = express();
+
+require("./models/users.models");
 
 mongoose
   .connect(mongo_connect, {})
