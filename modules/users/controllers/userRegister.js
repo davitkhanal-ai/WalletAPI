@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 const userRegister = async (req, res) => {
   const Users = mongoose.model("users");
@@ -8,7 +8,7 @@ const userRegister = async (req, res) => {
   const { name, address, email, password, balance } = req.body;
 
   //validations if possible
- // const encPassword = await bcrypt.hash(password, 10);
+  const encPassword = await bcrypt.hash(password, 10);
   //creation code
 
   try {
@@ -16,8 +16,7 @@ const userRegister = async (req, res) => {
       name,
       email,
       address,
-      password,
-    //   password: encPassword,
+      password: encPassword,
       balance,
       address,
     });
