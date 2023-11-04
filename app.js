@@ -5,6 +5,9 @@ require("dotenv").config();
 const app = express();
 const mongo_connect = process.env.MONGO_URL;
 
+//create a collection called users
+require("./models/users.models");
+
 mongoose
   .connect(mongo_connect, {})
   .then(() => {

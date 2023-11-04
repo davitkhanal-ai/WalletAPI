@@ -1,6 +1,5 @@
-const userRegister = (req,res) => {
-    res.status(200).json({status : "Hello user are you registering ?"})
+const userRegister = (req, res) => {
+  res.status(200).json({ status: "Hello user are you registering ?" });
 };
 
-
-module.exports = userRegister
+module.exports = userRegister;
