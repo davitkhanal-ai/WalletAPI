@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema(
     },
     balance: {
       type: Number,
-      require: [true, "balance is required"],
+      require: [true, "your balance is required"],
     },
   },
   {
