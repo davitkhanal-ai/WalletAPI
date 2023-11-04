@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       required: [true, "Email is required"],
-      // unique:true
+      unique: true,
     },
     password: {
       type: String,
@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema(
     },
     balance: {
       type: Number,
-      require: [true, "balance is required"],
+      require: [true, "your balance is required"],
     },
   },
   {

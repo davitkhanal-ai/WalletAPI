@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-// const bcrypt = require("bcrypt");
+ const bcrypt = require("bcrypt");
 
 const userRegister = async (req, res) => {
   const Users = mongoose.model("users");
@@ -8,18 +8,16 @@ const userRegister = async (req, res) => {
   const { name, address, email, password, balance } = req.body;
 
   //validations if possible
- // const encPassword = await bcrypt.hash(password, 10);
+   const encPassword = await bcrypt.hash(password, 10);
   //creation code
 
   try {
     const createdUser = await Users.create({
       name,
+      address,
       email,
-      address,
-      password,
-    //   password: encPassword,
+      password: encPassword,
       balance,
-      address,
     });
   } catch (error) {
     res.status(400).json({ status: "failed", message: error.message });
