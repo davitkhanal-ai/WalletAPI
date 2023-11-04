@@ -3,11 +3,6 @@ const mongoose = require("mongoose");
 const userRouter = require("./modules/users/users.routes");
 require("dotenv").config();
 const app = express();
-app.use(express.json());
-const mongo_connect = process.env.MONGO_URL;
-
-//create a collection called users
-require("./models/users.models");
 
 mongoose
   .connect(mongo_connect, {})
