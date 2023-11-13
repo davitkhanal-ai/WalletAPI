@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./modules/users/users.routes");
+const incomeRouter = require("./modules/income/income.routes");
 require("dotenv").config();
 const app = express();
 app.use(express.json());
@@ -29,6 +30,9 @@ mongoose
 
 // Router redirection starts here
 app.use("/users", userRouter);
+
+//Router redirection for incomes
+app.use("/income",incomeRouter)
 
 // to listen the server in 8000
 app.listen(8000, () => {
