@@ -33,11 +33,12 @@ const userLogin = async (req, res) => {
     {
       email: getUserForAccessToken.email,
       name: getUserForAccessToken.name,
+      _id: getUserForAccessToken._id,
     },
-    process.env.jwt-salt
+    process.env.jwt_salt
   );
 
-  res.status(200).json({ status: "user login succesfully",accessToken });
+  res.status(200).json({ status: "user login succesfully", accessToken });
 };
 
 module.exports = userLogin;
