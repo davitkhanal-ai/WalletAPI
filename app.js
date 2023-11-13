@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./modules/users/users.routes");
 const incomeRouter = require("./modules/income/income.routes");
+const expensesRouter = require("./modules/expenses/expenses.routes");
 require("dotenv").config();
 const app = express();
 app.use(express.json());
@@ -33,6 +34,9 @@ app.use("/users", userRouter);
 
 //Router redirection for incomes
 app.use("/income",incomeRouter)
+
+//Router redirection for incomes
+app.use("/expenses",expensesRouter)
 
 // to listen the server in 8000
 app.listen(8000, () => {
