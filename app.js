@@ -19,6 +19,7 @@ const mongo_connect = process.env.MONGO_URL;
 
 //create a collection called users
 require("./models/users.models");
+require("./models/transactions.models");
 
 mongoose
   .connect(mongo_connect, {})
@@ -33,10 +34,10 @@ mongoose
 app.use("/users", userRouter);
 
 //Router redirection for incomes
-app.use("/income",incomeRouter)
+app.use("/income", incomeRouter);
 
 //Router redirection for incomes
-app.use("/expenses",expensesRouter)
+app.use("/expenses", expensesRouter);
 
 // to listen the server in 8000
 app.listen(8000, () => {

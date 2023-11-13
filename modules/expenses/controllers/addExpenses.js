@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const addExpenses = async (req, res) => {
   const Users = mongoose.model("users");
+  const Transactions = mongoose.model("transactions");
   const { amount, remarks } = req.body;
 
   try {
@@ -15,15 +16,29 @@ const addExpenses = async (req, res) => {
   }
 
   //after success
-  await Users.updateOne(
-    {
-      _id: req.user._id,
-    },
-    { $inc: { balance: -amount } },
-    {
-      runValidators: true,
-    }
-  );
+  try {
+    //create transaction history
+    await Transactions.create({
+      amount: amount,
+      remarks: remarks,
+      user_id: req.user._id,
+      transaction_type: "expenses",
+    });
+
+    //after success
+    await Users.updateOne(
+      {
+        _id: req.user._id,
+      },
+      { $inc: { balance: -amount } },
+      {
+        runValidators: true,
+      }
+    );
+  } catch (error) {
+    res.status(400).json({ status: "failed", message: error });
+    return;
+  }
 
   res.status(200).json({ status: "Expenses was update" });
 };
