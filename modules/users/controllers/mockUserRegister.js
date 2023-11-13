@@ -11,8 +11,6 @@ const mockUserRegister = async (req, res) => {
     console.log(req.body[i]);
     const { name, address, email, password, balance } = req.body[i];
     const encPassword = await bcrypt.hash(password, 10);
-    console.log(encPassword);
-
     try {
       const createdUser = await Users.create({
         name,
